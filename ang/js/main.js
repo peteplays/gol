@@ -63,7 +63,6 @@ pete.controller('gol', function($scope, $interval) {
                 board[c][r] = Math.round(Math.round(Math.random() * 2)/2);
             }
         }
-        return board;
     };
 
     //--check alive or dead
