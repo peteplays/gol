@@ -48,13 +48,13 @@ pete.controller('gol', function($scope, $interval) {
 
     //--start 
     populate_grid = function() {
-        create_gird( board );        
+        create_gird();        
         update_board();
         CURRENTLY_RUNNING = $interval( update_board, $scope.running_speed );  
     };
 
     //--create grid
-    create_gird = function( board ) {
+    create_gird = function() {
         //--creates multiD array per grid size with 1 and 0
         for( var c = 0; c < grid_size; c++ ) {
             board[c] = [];
