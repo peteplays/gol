@@ -40,7 +40,12 @@ pete.controller('gol', function($scope, $interval) {
         $scope.speed_change_update_text = 'UPDATE ';
         $scope.speed_change_class = 1;
     };
-
+    $scope.stop_game = function() {
+        $interval.cancel( CURRENTLY_RUNNING );
+    };
+    $scope.restart_game = function() {
+         CURRENTLY_RUNNING = $interval( update_board,  $scope.running_speed );
+    };
     reset_grid_size_display = function() {
         $scope.grid_size_update_text = '';
         $scope.grid_size_change_class = 0;
@@ -73,7 +78,7 @@ pete.controller('gol', function($scope, $interval) {
             data[r] = [];
             row.forEach( function( cell, c ) {
                 var alive = 0;
-                var count = count_neighbors(r, c);
+                var count = count_neighbors( r, c );
                 
                 if( cell > 0 ) {
                     if( count === 2 || count === 3 ) {
