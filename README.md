@@ -1,5 +1,5 @@
 # gol
-Game of Life
+# Game of Life
 to run:<br>
 clone repo<br>
 cd to ang<br>
