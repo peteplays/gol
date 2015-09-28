@@ -1,6 +1,6 @@
 # Game of Life
-to run:
-clone repo
-cd to ang
+to run:<br>
+clone repo<br>
+cd to ang<br>
 
 open index.html
