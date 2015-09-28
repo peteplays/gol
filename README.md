@@ -3,4 +3,4 @@ Game of Life
 to run:<br>
 clone repo<br>
 cd to ang<br>
-open index.hmtl
+open index.html
