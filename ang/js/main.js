@@ -3,7 +3,7 @@ pete.controller('gol', function($scope, $interval) {
 
     var grid_size = 10;    
     var board = [];
-    var CURRENTLY_RUNNING = '';
+    var CURRENTLY_RUNNING;
     
     $scope.grid_size = grid_size;
     $scope.init_running_speed = 500;
@@ -29,7 +29,7 @@ pete.controller('gol', function($scope, $interval) {
         $scope.speed_change_update_text = '';
         $scope.speed_change_class = 0; 
         $scope.start_game_btn = ' Over'; 
-        $interval.cancel( CURRENTLY_RUNNING );
+        //$interval.cancel( CURRENTLY_RUNNING );
         populate_grid();     
     };
     $scope.grid_size_change = function(){
@@ -50,7 +50,8 @@ pete.controller('gol', function($scope, $interval) {
     populate_grid = function() {
         create_gird();        
         update_board();
-        CURRENTLY_RUNNING = $interval( update_board, $scope.running_speed );  
+        $interval.cancel( CURRENTLY_RUNNING );
+        CURRENTLY_RUNNING = $interval( update_board,  $scope.running_speed );  
     };
 
     //--create grid
