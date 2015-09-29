@@ -46,13 +46,13 @@ pete.controller('gol', function($scope, $interval) {
     $scope.restart_game = function() {
          CURRENTLY_RUNNING = $interval( update_board,  $scope.running_speed );
     };
-    reset_grid_size_display = function() {
+    var reset_grid_size_display = function() {
         $scope.grid_size_update_text = '';
         $scope.grid_size_change_class = 0;
     };
 
     //--start 
-    populate_grid = function() {
+    var populate_grid = function() {
         create_gird();        
         update_board();
         $interval.cancel( CURRENTLY_RUNNING );
@@ -60,7 +60,7 @@ pete.controller('gol', function($scope, $interval) {
     };
 
     //--create grid
-    create_gird = function() {
+    var create_gird = function() {
         //--creates multiD array per grid size with 1 and 0
         for( var c = 0; c < grid_size; c++ ) {
             board[c] = [];
@@ -71,7 +71,7 @@ pete.controller('gol', function($scope, $interval) {
     };
 
     //--check alive or dead
-    update_board = function() {        
+    var update_board = function() {        
         var data = [];        
                
         board.forEach( function( row, r ) {
@@ -103,11 +103,11 @@ pete.controller('gol', function($scope, $interval) {
     };
 
     //--return count of live neighbors for a cell
-    count_neighbors = function( c, r ) {
+    var count_neighbors = function( c, r ) {
         var count = 0;
 
         //--return cell status
-        check_alive = function( c, r ) {
+        var check_alive = function( c, r ) {
             return board[c] && board[c][r];
         };
 
@@ -123,11 +123,7 @@ pete.controller('gol', function($scope, $interval) {
         return count;
     };
 
-    //--set speed and run
-    //CURRENTLY_RUNNING = $interval( update_board, $scope.running_speed );
-
 });
-
 
 
 
