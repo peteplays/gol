@@ -41,13 +41,9 @@ game_config =
 		board : [],
 		grid_size : 10,
 		speed : 500
-
 	}
 ```
-Parameter		Type		Description												Required
-func			string		pass the function name you are calling from the ui		yes
-board			array		
-
+		
 ## Required
 <table>
 	<tr>
