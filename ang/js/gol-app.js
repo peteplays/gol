@@ -1,11 +1,11 @@
 var gol_app = function(config) {
-    "use strict";
+    //"use strict";
 
     var app_func = '';
     var app_board = [];
     var app_grid_size = '';
     var app_speed = '';
-    var app_running;
+    var APP_RUNNING;
 
     //--check func is present
     if( config.func === '' ) {
@@ -18,9 +18,6 @@ var gol_app = function(config) {
     app_grid_size = config.grid_size;
     app_speed = config.speed;
 
-    // console.log('APP:');
-    // console.log(config);
-
     switch( app_func ) {
         case 'start_game' : 
             return start_game( app_board, app_grid_size );
@@ -28,15 +25,13 @@ var gol_app = function(config) {
             return update_board( app_board, app_grid_size );
         case 'run_game' :
             return run_game( app_board, app_grid_size, app_speed );
-            // var rga = run_game( app_board, app_grid_size, app_speed );
-            // console.log(rga);
-            // break;
         case 'stop_game' :
-            return stop_game( app_running );
+            return stop_game( APP_RUNNING );
     }
 
+    //--create board with 1 and 0
     function create_board( app_board, app_grid_size ) {
-         //--create grid
+        //--create grid
         for( var c = 0; c < app_grid_size; c++ ) {
             app_board[c] = [];
             for( var r = 0; r < app_grid_size; r++ ) {
@@ -46,12 +41,16 @@ var gol_app = function(config) {
         return app_board;
     }
 
+    //--start game with one iteration
     function start_game( app_board, app_grid_size ) {        
         app_board = create_board( app_board, app_grid_size );  
         return update_board( app_board, app_grid_size );
     }
 
-    function update_board( app_board, app_grid_size ) { 
+    //--update the board
+    function update_board( app_board, app_grid_size ) {
+        console.log('updating..');
+
         var data = [];        
                
         app_board.forEach( function( row, r ) {
@@ -77,6 +76,7 @@ var gol_app = function(config) {
             });
         });
 
+
         function count_neighbors( c, r ) {
             var count = 0;
 
@@ -101,34 +101,20 @@ var gol_app = function(config) {
         return app_board;
     }
 
+    //--run  game
     function run_game( app_board, app_grid_size, app_speed ) {
-        // console.log('run game');
-        // console.log(app_board); 
-
-        //return update_board( app_board, app_grid_size, app_speed );
-       // console.log(app_board);
-
-        app_running = setInterval( function() { 
-        //setInterval( function() { 
-            console.log('run game');
+    
+        APP_RUNNING = setInterval( function() { 
+            console.log('runnning');
             update_board( app_board, app_grid_size );
-
-            // var run_this = update_board( app_board, app_grid_size );
-            // app_board =  run_this;
-            
-            // var qq = update_board( app_board, app_grid_size ); 
-            // console.log(qq);
         }, app_speed );
-
-        // var run_this = update_board( app_board, app_grid_size );
-        // app_running = setInterval( run_this, app_speed );
 
         return app_board;        
     }
         
-
-    function stop_game( app_running ) {
-        return clearInterval( app_running );
+    //--stop game
+    function stop_game( APP_RUNNING ) {
+        clearInterval( APP_RUNNING );
     }
 
 };

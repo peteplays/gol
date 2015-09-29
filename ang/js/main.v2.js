@@ -58,27 +58,15 @@ pete.controller('gol', function($scope, $interval) {
         $scope.grid_size_change_class = 0;
     };
 
-    //--start 
     var populate_grid = function() {
-        //create_gird();
-        //update();
-        //clear interval
-        //set interval
 
-        //--gather data to send to app
         game_config.func = 'start_game';
         game_config.board = board;
         game_config.grid_size = grid_size;
         game_config.speed = speed;
 
-        //console.log('ANG:');
-        //console.log(game_config);
-
         $scope.board = gol_app(game_config);
-        
-        var pg = gol_app(game_config);
-        console.log(pg);
-        
+                
         run_game();    
         
     };
@@ -90,9 +78,6 @@ pete.controller('gol', function($scope, $interval) {
         game_config.speed = speed;
 
         $scope.board = gol_app(game_config);
-        
-        var rg = gol_app(game_config);
-        console.log(rg);
     };
 
 });
